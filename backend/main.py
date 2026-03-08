@@ -43,6 +43,8 @@ async def get_video_info(url: str):
         'no_warnings': True,
         'extract_flat': False,
         'nocheckcertificate': True,
+        'force_ipv4': True,
+        'source_address': '0.0.0.0',
     }
 
     try:
@@ -90,6 +92,9 @@ async def download_video(url: str, background_tasks: BackgroundTasks):
         'merge_output_format': 'mp4',
         'quiet': True,
         'noplaylist': True,
+        'nocheckcertificate': True,
+        'force_ipv4': True,
+        'source_address': '0.0.0.0',
     }
 
     try:
