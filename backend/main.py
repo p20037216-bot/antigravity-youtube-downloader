@@ -42,6 +42,7 @@ async def get_video_info(url: str):
         'quiet': True,
         'no_warnings': True,
         'extract_flat': False,
+        'nocheckcertificate': True,
     }
 
     try:
@@ -63,7 +64,7 @@ async def get_video_info(url: str):
             }
     except Exception as e:
         print(f"Error extracting info: {e}")
-        raise HTTPException(status_code=400, detail="유효하지 않은 유튜브 링크이거나 정보를 가져올 수 없습니다.")
+        raise HTTPException(status_code=400, detail=f"정보 추출 실패: {str(e)}")
 
 @app.get("/api/download")
 async def download_video(url: str, background_tasks: BackgroundTasks):
